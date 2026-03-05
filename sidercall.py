@@ -102,7 +102,7 @@ class LLMSession:
     def _endpoint(self, path):
         if self.api_base.endswith('/v1'): return f"{self.api_base}/{path.lstrip('/')}"
         if self.api_base.endswith('$'): return f"{self.api_base.rstrip('$')}/{path.lstrip('/')}"
-        return f"{self.api_base}/v1/{path.lstrip('/')}"
+        return f"{self.api_base}/{path.lstrip('/')}"        # 不需要添加v1
 
     def _retry_delay(self, resp, attempt):
         retry_after = None
